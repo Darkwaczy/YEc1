@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@builder.io/dev-tools": "^1.25.0"
+  }
+}

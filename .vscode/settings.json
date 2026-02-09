@@ -1,0 +1,7 @@
+{
+    "builder.serverUrl": "",
+    "builder.command": "\nnpx @builder.io/dev-tools@latest codegen --url \"https://builder.io/content/2972e52d3d3b43a996b2055ad242d8a6/edit\"",
+    "builder.runDevServer": true,
+    "builder.autoDetectDevServer": true,
+    "builder.launchType": "editor"
+}
