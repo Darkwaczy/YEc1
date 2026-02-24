@@ -103,7 +103,7 @@ const membersData = [
         email: 'kalu@ingstech.com',
         whatsapp: '2348066666666',
         avatar: 'assets/builder/2f44510909616febc804c6f0707e4c6a276be5e8.webp'
-    }
+    },
 ];
 
 const moreMembersData = [
@@ -130,6 +130,54 @@ const moreMembersData = [
         email: 'kelvin@bripp.africa',
         whatsapp: '2348088888888',
         avatar: 'assets/builder/1a2254744f1cbbd574b4da2c2df92c062ec90f58.webp'
+    },
+    {
+        name: 'Aisha Bello',
+        title: 'Founder',
+        company: 'EduCloud',
+        tags: ['EdTech', 'AI', 'B2B'],
+        bio: 'Helping schools digitize learning with adaptive AI tools.',
+        location: 'FCT',
+        industry: 'Education',
+        email: 'aisha@educloud.io',
+        whatsapp: '2348099999999',
+        avatar: 'assets/builder/64f83b93657aea6d0309dfdaec78250920fa2fa6.webp'
+    },
+    {
+        name: 'Ifeoma Okoro',
+        title: 'Founder & CEO',
+        company: 'GreenBuild',
+        tags: ['CleanTech', 'Construction', 'B2B'],
+        bio: 'Sustainable building materials for fast-growing cities.',
+        location: 'Enugu',
+        industry: 'Construction',
+        email: 'ifeoma@greenbuild.com',
+        whatsapp: '2348101010101',
+        avatar: 'assets/builder/8bf11482c6438f7833449a09978753e18bd16989.webp'
+    },
+    {
+        name: 'David Ololo. O',
+        title: 'Founder & CEO',
+        company: 'Tunched Tech/Tunched Ltd',
+        tags: ['FinTech', 'Blockchain', 'B2C'],
+        bio: 'Personal finance management platform. Looking for advisors with regulatory experience.',
+        location: 'Abia',
+        industry: 'Banking',
+        email: 'david@tunched.com',
+        whatsapp: '2348055555555',
+        avatar: 'assets/builder/699fcafba0a0c892477cb5c5e51ee806d027bb86.webp'
+    },
+    {
+        name: 'Kalu Kingsley',
+        title: 'Founder & CEO',
+        company: 'Ingstech, Bripp',
+        tags: ['CleanTech', 'Sustainability', 'Hardware'],
+        bio: 'Developing sustainable energy solutions. Looking for partnerships in renewable technology.',
+        location: 'Akwa Ibom',
+        industry: 'CleanTech',
+        email: 'kalu@ingstech.com',
+        whatsapp: '2348066666666',
+        avatar: 'assets/builder/2f44510909616febc804c6f0707e4c6a276be5e8.webp'
     }
 ];
 
@@ -165,22 +213,24 @@ function initializeDirectory() {
 
     if (loadMoreButton) {
         loadMoreButton.addEventListener('click', function() {
-            if (loadMoreUsed) {
-                showNotification('No more members to load.');
-                return;
-            }
             this.textContent = 'Loading...';
             this.disabled = true;
 
             setTimeout(() => {
-                currentMembers = currentMembers.concat(moreMembersData);
+                if (!loadMoreUsed) {
+                    currentMembers = moreMembersData.slice();
+                    loadMoreUsed = true;
+                    showNotification('6 more members loaded!');
+                } else {
+                    currentMembers = membersData.slice();
+                    loadMoreUsed = false;
+                    showNotification('Showing first 6 members.');
+                }
                 renderMembers(currentMembers);
                 bindMemberActions();
                 applyFilters();
-                loadMoreUsed = true;
                 this.textContent = 'Load More Members';
                 this.disabled = false;
-                showNotification('2 more members loaded!');
             }, 800);
         });
     }
