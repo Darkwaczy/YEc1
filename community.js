@@ -2,105 +2,294 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize all interactive features
-    initializeSearch();
-    initializeFilters();
-    initializeMemberCards();
+    initializeDirectory();
     initializeActivityFeed();
     initializeChapterCards();
     initializeForums();
     initializeScrollAnimations();
 });
 
-// Search functionality
-function initializeSearch() {
+// Member directory data
+const membersData = [
+    {
+        name: 'Okechukwu Martins',
+        title: 'Founder & CEO',
+        company: 'Qrest Company, Co-founder Kargoo',
+        tags: ['SaaS', 'AI/ML', 'B2B'],
+        bio: 'Building AI-powered workflow automation tools. Mentor for early-stage SaaS founders.',
+        location: 'Umuahia, Abia State',
+        industry: 'SaaS',
+        email: 'okechukwu@qrest.com',
+        whatsapp: '2348011111111',
+        avatar: 'assets/builder/f8c3608ee1a5a59765e1a82c9d04742836704717.webp'
+    },
+    {
+        name: 'Chioma Nwojeh',
+        title: 'Founder & CEO',
+        company: 'Nich-The Branded Wears',
+        tags: ['HealthTech', 'AI', 'B2B'],
+        bio: 'AI-powered healthcare diagnostics. Seeking partnerships with medical institutions.',
+        location: 'Umuahia, Abia State',
+        industry: 'HealthTech',
+        email: 'chioma@nichts.com',
+        whatsapp: '2348022222222',
+        avatar: 'assets/builder/e37616c2a18681fce27be5d1ea95a8eec7100f78.webp'
+    },
+    {
+        name: 'Christmas Ifeanyi',
+        title: 'Founder & Creative Director',
+        company: 'Have-More Foods',
+        tags: ['Marketing', 'Branding', 'Agency'],
+        bio: 'Full-service digital marketing agency. Mentor for service-based businesses and agencies.',
+        location: 'Umuahia, Abia State',
+        industry: 'Marketing',
+        email: 'christmas@havemorefoods.com',
+        whatsapp: '2348033333333',
+        avatar: 'assets/builder/92200fa0077c7171ed3876c332f80bb9adf05d4f.webp'
+    },
+    {
+        name: 'Wisdom Lion Ekeleme',
+        title: 'Founder & CEO',
+        company: 'Lion Dynasty Multiglobal Company',
+        tags: ['Logistics', 'Supply Chain', 'B2B'],
+        bio: 'Sustainable supply chain solutions. Open to partnerships with e-commerce companies.',
+        location: 'Umuahia, Abia State',
+        industry: 'Logistics',
+        email: 'wisdom@liondynasty.com',
+        whatsapp: '2348044444444',
+        avatar: 'assets/builder/a4adaf0b6a99f2044425fa78d03c08dc24c8163e.webp'
+    },
+    {
+        name: 'David Ololo. O',
+        title: 'Founder & CEO',
+        company: 'Tunched Tech/Tunched Ltd',
+        tags: ['FinTech', 'Blockchain', 'B2C'],
+        bio: 'Personal finance management platform. Looking for advisors with regulatory experience.',
+        location: 'Umuahia, Abia State',
+        industry: 'FinTech',
+        email: 'david@tunched.com',
+        whatsapp: '2348055555555',
+        avatar: 'assets/builder/699fcafba0a0c892477cb5c5e51ee806d027bb86.webp'
+    },
+    {
+        name: 'Kalu Kingsley',
+        title: 'Founder & CEO',
+        company: 'Ingstech, Bripp',
+        tags: ['CleanTech', 'Sustainability', 'Hardware'],
+        bio: 'Developing sustainable energy solutions. Looking for partnerships in renewable technology.',
+        location: 'Eket, Akwa Ibom State',
+        industry: 'CleanTech',
+        email: 'kalu@ingstech.com',
+        whatsapp: '2348066666666',
+        avatar: 'assets/builder/2f44510909616febc804c6f0707e4c6a276be5e8.webp'
+    }
+];
+
+const moreMembersData = [
+    {
+        name: 'Amara Uzochukwu',
+        title: 'Co-Founder',
+        company: 'Zobo Moment',
+        tags: ['FoodTech', 'E-commerce', 'B2C'],
+        bio: 'Building a scalable D2C beverage brand. Open to distribution partners.',
+        location: 'Lagos, Nigeria',
+        industry: 'FoodTech',
+        email: 'amara@zobomoment.com',
+        whatsapp: '2348077777777',
+        avatar: 'assets/builder/03d5005d9c6f90e0ddbd74e0a6044dd10a294251.webp'
+    },
+    {
+        name: 'Kelvin Adebayo',
+        title: 'Product Lead',
+        company: 'Bripp',
+        tags: ['FinTech', 'Payments', 'B2B'],
+        bio: 'Designing secure payment rails for SMEs across Africa.',
+        location: 'Ibadan, Oyo State',
+        industry: 'FinTech',
+        email: 'kelvin@bripp.africa',
+        whatsapp: '2348088888888',
+        avatar: 'assets/builder/1a2254744f1cbbd574b4da2c2df92c062ec90f58.webp'
+    },
+    {
+        name: 'Aisha Bello',
+        title: 'Founder',
+        company: 'EduCloud',
+        tags: ['EdTech', 'AI', 'B2B'],
+        bio: 'Helping schools digitize learning with adaptive AI tools.',
+        location: 'Abuja, FCT',
+        industry: 'EdTech',
+        email: 'aisha@educloud.io',
+        whatsapp: '2348099999999',
+        avatar: 'assets/builder/64f83b93657aea6d0309dfdaec78250920fa2fa6.webp'
+    },
+    {
+        name: 'Ifeoma Okoro',
+        title: 'Founder & CEO',
+        company: 'GreenBuild',
+        tags: ['CleanTech', 'Construction', 'B2B'],
+        bio: 'Sustainable building materials for fast-growing cities.',
+        location: 'Enugu, Enugu State',
+        industry: 'CleanTech',
+        email: 'ifeoma@greenbuild.com',
+        whatsapp: '2348101010101',
+        avatar: 'assets/builder/8bf11482c6438f7833449a09978753e18bd16989.webp'
+    },
+    {
+        name: 'Tunde Alabi',
+        title: 'Founder',
+        company: 'Bemsoft',
+        tags: ['SaaS', 'HR', 'B2B'],
+        bio: 'Automating HR workflows for mid-size companies.',
+        location: 'Port Harcourt, Rivers State',
+        industry: 'SaaS',
+        email: 'tunde@bemsoft.com',
+        whatsapp: '2348111111111',
+        avatar: 'assets/builder/764f92efc4625ae3ea01bc5aff0ea6c101c83f2c.webp'
+    },
+    {
+        name: 'Zainab Lawal',
+        title: 'Founder',
+        company: 'HealthBridge',
+        tags: ['HealthTech', 'Telemedicine', 'B2C'],
+        bio: 'Remote care for underserved communities.',
+        location: 'Kano, Kano State',
+        industry: 'HealthTech',
+        email: 'zainab@healthbridge.com',
+        whatsapp: '2348121212121',
+        avatar: 'assets/builder/21e685fa29d0a2c8802414a35a2ab890ea1dd8d5.webp'
+    }
+];
+
+let currentMembers = membersData.slice();
+
+function initializeDirectory() {
     const searchInput = document.querySelector('.search-input');
-    const memberCards = document.querySelectorAll('.member-card');
-    
-    if (searchInput) {
-        searchInput.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            
-            memberCards.forEach(card => {
-                const name = card.querySelector('.member-name')?.textContent.toLowerCase() || '';
-                const company = card.querySelector('.member-company')?.textContent.toLowerCase() || '';
-                const bio = card.querySelector('.member-bio')?.textContent.toLowerCase() || '';
-                const tags = Array.from(card.querySelectorAll('.member-tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
-                
-                const isMatch = name.includes(searchTerm) || 
-                               company.includes(searchTerm) || 
-                               bio.includes(searchTerm) || 
-                               tags.includes(searchTerm);
-                
-                card.style.display = isMatch ? 'flex' : 'none';
-            });
-        });
-    }
-}
-
-// Filter functionality
-function initializeFilters() {
-    const filterSelects = document.querySelectorAll('.filter-select');
+    const industrySelect = document.getElementById('industryFilter');
+    const locationSelect = document.getElementById('locationFilter');
     const filterButton = document.querySelector('.filter-button');
-    
-    filterSelects.forEach(select => {
-        select.addEventListener('change', function() {
-            // Add filter logic here
-            console.log('Filter changed:', this.value);
-        });
-    });
-    
-    if (filterButton) {
-        filterButton.addEventListener('click', function() {
-            // Toggle advanced filters
-            console.log('Advanced filters toggled');
-        });
-    }
-}
-
-// Member card interactions
-function initializeMemberCards() {
-    const connectButtons = document.querySelectorAll('.connect-button');
-    const messageButtons = document.querySelectorAll('.message-button');
     const loadMoreButton = document.querySelector('.load-more-button');
-    
-    connectButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const memberCard = this.closest('.member-card');
-            const memberName = memberCard.querySelector('.member-name').textContent;
-            
-            // Simulate connection request
-            this.textContent = 'Connecting...';
-            this.disabled = true;
-            
-            setTimeout(() => {
-                this.textContent = 'Connected';
-                this.style.backgroundColor = '#10B981';
-                showNotification(`Connection request sent to ${memberName}!`);
-            }, 1000);
-        });
-    });
-    
-    messageButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const memberCard = this.closest('.member-card');
-            const memberName = memberCard.querySelector('.member-name').textContent;
-            showNotification(`Opening message with ${memberName}...`);
-        });
-    });
-    
+
+    renderMembers(currentMembers);
+    populateFilterOptions(industrySelect, locationSelect, membersData);
+    bindMemberActions();
+
+    if (searchInput) {
+        searchInput.addEventListener('input', applyFilters);
+    }
+
+    if (industrySelect) {
+        industrySelect.addEventListener('change', applyFilters);
+    }
+
+    if (locationSelect) {
+        locationSelect.addEventListener('change', applyFilters);
+    }
+
+    if (filterButton) {
+        filterButton.addEventListener('click', applyFilters);
+    }
+
     if (loadMoreButton) {
         loadMoreButton.addEventListener('click', function() {
             this.textContent = 'Loading...';
             this.disabled = true;
-            
-            // Simulate loading more members
+
             setTimeout(() => {
+                currentMembers = moreMembersData.slice();
+                renderMembers(currentMembers);
+                bindMemberActions();
+                applyFilters();
                 this.textContent = 'Load More Members';
                 this.disabled = false;
                 showNotification('More members loaded!');
-            }, 1500);
+            }, 800);
         });
     }
+}
+
+function renderMembers(list) {
+    const grid = document.querySelector('.members-grid');
+    if (!grid) return;
+
+    grid.innerHTML = list.map(member => `
+        <div class="member-card" data-industry="${member.industry}" data-location="${member.location}">
+            <img src="${member.avatar}" alt="${member.name}" class="member-avatar">
+            <h3 class="member-name">${member.name}</h3>
+            <p class="member-title">${member.title}</p>
+            <p class="member-company">${member.company}</p>
+            <div class="member-tags">
+                ${member.tags.map(tag => `<span class="member-tag">${tag}</span>`).join('')}
+            </div>
+            <p class="member-bio">${member.bio}</p>
+            <div class="member-location">
+                <img src="assets/builder/2ebc42fb54d86fe976f702d4b746c435afdaa9cf.svg" alt="Location" class="location-icon">
+                <span>${member.location}</span>
+            </div>
+            <div class="member-actions">
+                <button class="connect-button" data-email="${member.email}">Connect</button>
+                <button class="message-button" data-whatsapp="${member.whatsapp}">Message</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function populateFilterOptions(industrySelect, locationSelect, list) {
+    if (!industrySelect || !locationSelect) return;
+
+    const industries = Array.from(new Set(list.map(member => member.industry))).sort();
+    const locations = Array.from(new Set(list.map(member => member.location))).sort();
+
+    industrySelect.innerHTML = `<option value="all">All Industries</option>` +
+        industries.map(industry => `<option value="${industry}">${industry}</option>`).join('');
+    locationSelect.innerHTML = `<option value="all">All Locations</option>` +
+        locations.map(location => `<option value="${location}">${location}</option>`).join('');
+}
+
+function applyFilters() {
+    const searchInput = document.querySelector('.search-input');
+    const industrySelect = document.getElementById('industryFilter');
+    const locationSelect = document.getElementById('locationFilter');
+
+    const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+    const industryValue = industrySelect ? industrySelect.value : 'all';
+    const locationValue = locationSelect ? locationSelect.value : 'all';
+
+    const filtered = currentMembers.filter(member => {
+        const matchesSearch = [
+            member.name,
+            member.company,
+            member.bio,
+            member.tags.join(' ')
+        ].join(' ').toLowerCase().includes(searchTerm);
+
+        const matchesIndustry = industryValue === 'all' || member.industry === industryValue;
+        const matchesLocation = locationValue === 'all' || member.location === locationValue;
+
+        return matchesSearch && matchesIndustry && matchesLocation;
+    });
+
+    renderMembers(filtered);
+    bindMemberActions();
+}
+
+function bindMemberActions() {
+    const connectButtons = document.querySelectorAll('.connect-button');
+    const messageButtons = document.querySelectorAll('.message-button');
+
+    connectButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const email = this.getAttribute('data-email');
+            showNotification(`Member email: ${email}`);
+        });
+    });
+
+    messageButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const phone = this.getAttribute('data-whatsapp');
+            const url = `https://wa.me/${phone}`;
+            window.open(url, '_blank');
+        });
+    });
 }
 
 // Activity feed interactions

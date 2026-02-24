@@ -342,6 +342,9 @@ a {
 .feature-icon {
     width: 24px;
     height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     background: var(--color-green);
     display: flex;

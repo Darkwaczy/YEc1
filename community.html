@@ -347,11 +347,11 @@
                     <input type="text" placeholder="Search members by name, company, or expertise..." class="search-input">
                 </div>
                 <div class="filter-controls">
-                    <select class="filter-select">
-                        <option>All Industries</option>
+                    <select id="industryFilter" class="filter-select">
+                        <option value="all">All Industries</option>
                     </select>
-                    <select class="filter-select">
-                        <option>All Locations</option>
+                    <select id="locationFilter" class="filter-select">
+                        <option value="all">All Locations</option>
                     </select>
                     <button class="filter-button">
                         <img src="assets/builder/6338fcac1c26185b4309bb2a2f30ea82df7a648f.svg" alt="Filter" class="filter-icon">
@@ -360,157 +360,7 @@
             </div>
 
             <!-- Member Cards Grid -->
-            <div class="members-grid">
-                <!-- Member Card 1 -->
-                <div class="member-card">
-                    <img src="assets/builder/f8c3608ee1a5a59765e1a82c9d04742836704717.webp" alt="Okechukwu Martins" class="member-avatar">
-                    <h3 class="member-name">Okechukwu Martins</h3>
-                    <p class="member-title">Founder & CEO</p>
-                    <p class="member-company">Qrest Company, Co-founder Kargoo</p>
-                    <div class="member-tags">
-                        <span class="member-tag">SaaS</span>
-                        <span class="member-tag">AI/ML</span>
-                        <span class="member-tag">B2B</span>
-                    </div>
-                    <p class="member-bio">
-                        Building AI-powered workflow automation tools.<br>
-                        Mentor for early-stage SaaS founders.
-                    </p>
-                    <div class="member-location">
-                        <img src="assets/builder/2ebc42fb54d86fe976f702d4b746c435afdaa9cf.svg" alt="Location" class="location-icon">
-                        <span>Umuahia, Abia State</span>
-                    </div>
-                    <div class="member-actions">
-                        <button class="connect-button">Connect</button>
-                        <button class="message-button">Message</button>
-                    </div>
-                </div>
-
-                <!-- Member Card 2 -->
-                <div class="member-card">
-                    <img src="assets/builder/e37616c2a18681fce27be5d1ea95a8eec7100f78.webp" alt="Chioma Nwojeh" class="member-avatar">
-                    <h3 class="member-name">Chioma Nwojeh</h3>
-                    <p class="member-title">Founder & CEO</p>
-                    <p class="member-company">Nich-The Branded Wears</p>
-                    <div class="member-tags">
-                        <span class="member-tag">HealthTech</span>
-                        <span class="member-tag">AI</span>
-                        <span class="member-tag">B2B</span>
-                    </div>
-                    <p class="member-bio">
-                        AI-powered healthcare diagnostics. Seeking<br>
-                        partnerships with medical institutions.
-                    </p>
-                    <div class="member-location">
-                        <img src="assets/builder/2ebc42fb54d86fe976f702d4b746c435afdaa9cf.svg" alt="Location" class="location-icon">
-                        <span>Umuahia, Abia State</span>
-                    </div>
-                    <div class="member-actions">
-                        <button class="connect-button">Connect</button>
-                        <button class="message-button">Message</button>
-                    </div>
-                </div>
-
-                <!-- Member Card 3 -->
-                <div class="member-card">
-                    <img src="assets/builder/92200fa0077c7171ed3876c332f80bb9adf05d4f.webp" alt="Christmas Ifeanyi" class="member-avatar">
-                    <h3 class="member-name">Christmas Ifeanyi</h3>
-                    <p class="member-title">Founder & Creative Director</p>
-                    <p class="member-company">Have-More Foods</p>
-                    <div class="member-tags">
-                        <span class="member-tag">Marketing</span>
-                        <span class="member-tag">Branding</span>
-                        <span class="member-tag">Agency</span>
-                    </div>
-                    <p class="member-bio">
-                        Full-service digital marketing agency. Mentor for<br>
-                        service-based businesses and agencies.
-                    </p>
-                    <div class="member-location">
-                        <img src="assets/builder/2ebc42fb54d86fe976f702d4b746c435afdaa9cf.svg" alt="Location" class="location-icon">
-                        <span>Umuahia, Abia State</span>
-                    </div>
-                    <div class="member-actions">
-                        <button class="connect-button">Connect</button>
-                        <button class="message-button">Message</button>
-                    </div>
-                </div>
-
-                <!-- Member Card 4 -->
-                <div class="member-card">
-                    <img src="assets/builder/a4adaf0b6a99f2044425fa78d03c08dc24c8163e.webp" alt="Wisdom Lion Ekeleme" class="member-avatar">
-                    <h3 class="member-name">Wisdom Lion Ekeleme</h3>
-                    <p class="member-title">Founder & CEO</p>
-                    <p class="member-company">Lion Dynasty Multiglobal Company</p>
-                    <div class="member-tags">
-                        <span class="member-tag">Logistics</span>
-                        <span class="member-tag">Supply Chain</span>
-                        <span class="member-tag">B2B</span>
-                    </div>
-                    <p class="member-bio">
-                        Sustainable supply chain solutions. Open to<br>
-                        partnerships with e-commerce companies.
-                    </p>
-                    <div class="member-location">
-                        <img src="assets/builder/2ebc42fb54d86fe976f702d4b746c435afdaa9cf.svg" alt="Location" class="location-icon">
-                        <span>Umuahia, Abia State</span>
-                    </div>
-                    <div class="member-actions">
-                        <button class="connect-button">Connect</button>
-                        <button class="message-button">Message</button>
-                    </div>
-                </div>
-
-                <!-- Member Card 5 -->
-                <div class="member-card">
-                    <img src="assets/builder/699fcafba0a0c892477cb5c5e51ee806d027bb86.webp" alt="David Ololo. O" class="member-avatar">
-                    <h3 class="member-name">David Ololo. O</h3>
-                    <p class="member-title">Founder & CEO</p>
-                    <p class="member-company">Tunched Tech/Tunched Ltd</p>
-                    <div class="member-tags">
-                        <span class="member-tag">FinTech</span>
-                        <span class="member-tag">Blockchain</span>
-                        <span class="member-tag">B2C</span>
-                    </div>
-                    <p class="member-bio">
-                        Personal finance management platform. Looking<br>
-                        for advisors with regulatory experience.
-                    </p>
-                    <div class="member-location">
-                        <img src="assets/builder/2ebc42fb54d86fe976f702d4b746c435afdaa9cf.svg" alt="Location" class="location-icon">
-                        <span>Umuahia, Abia State</span>
-                    </div>
-                    <div class="member-actions">
-                        <button class="connect-button">Connect</button>
-                        <button class="message-button">Message</button>
-                    </div>
-                </div>
-
-                <!-- Member Card 6 -->
-                <div class="member-card">
-                    <img src="assets/builder/2f44510909616febc804c6f0707e4c6a276be5e8.webp" alt="Kalu Kingsley" class="member-avatar">
-                    <h3 class="member-name">Kalu Kingsley</h3>
-                    <p class="member-title">Founder & CEO</p>
-                    <p class="member-company">Ingstech, Bripp</p>
-                    <div class="member-tags">
-                        <span class="member-tag">CleanTech</span>
-                        <span class="member-tag">Sustainability</span>
-                        <span class="member-tag">Hardware</span>
-                    </div>
-                    <p class="member-bio">
-                        Developing sustainable energy solutions. Looking<br>
-                        for partnerships in renewable technology.
-                    </p>
-                    <div class="member-location">
-                        <img src="assets/builder/2ebc42fb54d86fe976f702d4b746c435afdaa9cf.svg" alt="Location" class="location-icon">
-                        <span>Eket,Akwa Ibom State</span>
-                    </div>
-                    <div class="member-actions">
-                        <button class="connect-button">Connect</button>
-                        <button class="message-button">Message</button>
-                    </div>
-                </div>
-            </div>
+            <div class="members-grid"></div>
 
             <div class="load-more-container">
                 <button class="load-more-button">Load More Members</button>
