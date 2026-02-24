@@ -10,6 +10,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Member directory data
+const industryOptions = [
+    'Technology',
+    'Banking',
+    'Marketing',
+    'Logistics',
+    'Healthcare',
+    'Education',
+    'CleanTech',
+    'Food & Beverage',
+    'Construction',
+    'E-commerce'
+];
+
+const locationOptions = [
+    'Abia', 'Adamawa', 'Akwa Ibom', 'Anambra', 'Bauchi', 'Bayelsa', 'Benue', 'Borno',
+    'Cross River', 'Delta', 'Ebonyi', 'Edo', 'Ekiti', 'Enugu', 'Gombe', 'Imo',
+    'Jigawa', 'Kaduna', 'Kano', 'Katsina', 'Kebbi', 'Kogi', 'Kwara', 'Lagos',
+    'Nasarawa', 'Niger', 'Ogun', 'Ondo', 'Osun', 'Oyo', 'Plateau', 'Rivers',
+    'Sokoto', 'Taraba', 'Yobe', 'Zamfara', 'FCT'
+];
+
 const membersData = [
     {
         name: 'Okechukwu Martins',
@@ -17,8 +38,8 @@ const membersData = [
         company: 'Qrest Company, Co-founder Kargoo',
         tags: ['SaaS', 'AI/ML', 'B2B'],
         bio: 'Building AI-powered workflow automation tools. Mentor for early-stage SaaS founders.',
-        location: 'Umuahia, Abia State',
-        industry: 'SaaS',
+        location: 'Abia',
+        industry: 'Technology',
         email: 'okechukwu@qrest.com',
         whatsapp: '2348011111111',
         avatar: 'assets/builder/f8c3608ee1a5a59765e1a82c9d04742836704717.webp'
@@ -29,8 +50,8 @@ const membersData = [
         company: 'Nich-The Branded Wears',
         tags: ['HealthTech', 'AI', 'B2B'],
         bio: 'AI-powered healthcare diagnostics. Seeking partnerships with medical institutions.',
-        location: 'Umuahia, Abia State',
-        industry: 'HealthTech',
+        location: 'Abia',
+        industry: 'Healthcare',
         email: 'chioma@nichts.com',
         whatsapp: '2348022222222',
         avatar: 'assets/builder/e37616c2a18681fce27be5d1ea95a8eec7100f78.webp'
@@ -41,7 +62,7 @@ const membersData = [
         company: 'Have-More Foods',
         tags: ['Marketing', 'Branding', 'Agency'],
         bio: 'Full-service digital marketing agency. Mentor for service-based businesses and agencies.',
-        location: 'Umuahia, Abia State',
+        location: 'Abia',
         industry: 'Marketing',
         email: 'christmas@havemorefoods.com',
         whatsapp: '2348033333333',
@@ -53,7 +74,7 @@ const membersData = [
         company: 'Lion Dynasty Multiglobal Company',
         tags: ['Logistics', 'Supply Chain', 'B2B'],
         bio: 'Sustainable supply chain solutions. Open to partnerships with e-commerce companies.',
-        location: 'Umuahia, Abia State',
+        location: 'Abia',
         industry: 'Logistics',
         email: 'wisdom@liondynasty.com',
         whatsapp: '2348044444444',
@@ -65,8 +86,8 @@ const membersData = [
         company: 'Tunched Tech/Tunched Ltd',
         tags: ['FinTech', 'Blockchain', 'B2C'],
         bio: 'Personal finance management platform. Looking for advisors with regulatory experience.',
-        location: 'Umuahia, Abia State',
-        industry: 'FinTech',
+        location: 'Abia',
+        industry: 'Banking',
         email: 'david@tunched.com',
         whatsapp: '2348055555555',
         avatar: 'assets/builder/699fcafba0a0c892477cb5c5e51ee806d027bb86.webp'
@@ -77,7 +98,7 @@ const membersData = [
         company: 'Ingstech, Bripp',
         tags: ['CleanTech', 'Sustainability', 'Hardware'],
         bio: 'Developing sustainable energy solutions. Looking for partnerships in renewable technology.',
-        location: 'Eket, Akwa Ibom State',
+        location: 'Akwa Ibom',
         industry: 'CleanTech',
         email: 'kalu@ingstech.com',
         whatsapp: '2348066666666',
@@ -92,8 +113,8 @@ const moreMembersData = [
         company: 'Zobo Moment',
         tags: ['FoodTech', 'E-commerce', 'B2C'],
         bio: 'Building a scalable D2C beverage brand. Open to distribution partners.',
-        location: 'Lagos, Nigeria',
-        industry: 'FoodTech',
+        location: 'Lagos',
+        industry: 'Food & Beverage',
         email: 'amara@zobomoment.com',
         whatsapp: '2348077777777',
         avatar: 'assets/builder/03d5005d9c6f90e0ddbd74e0a6044dd10a294251.webp'
@@ -104,63 +125,16 @@ const moreMembersData = [
         company: 'Bripp',
         tags: ['FinTech', 'Payments', 'B2B'],
         bio: 'Designing secure payment rails for SMEs across Africa.',
-        location: 'Ibadan, Oyo State',
-        industry: 'FinTech',
+        location: 'Oyo',
+        industry: 'Banking',
         email: 'kelvin@bripp.africa',
         whatsapp: '2348088888888',
         avatar: 'assets/builder/1a2254744f1cbbd574b4da2c2df92c062ec90f58.webp'
-    },
-    {
-        name: 'Aisha Bello',
-        title: 'Founder',
-        company: 'EduCloud',
-        tags: ['EdTech', 'AI', 'B2B'],
-        bio: 'Helping schools digitize learning with adaptive AI tools.',
-        location: 'Abuja, FCT',
-        industry: 'EdTech',
-        email: 'aisha@educloud.io',
-        whatsapp: '2348099999999',
-        avatar: 'assets/builder/64f83b93657aea6d0309dfdaec78250920fa2fa6.webp'
-    },
-    {
-        name: 'Ifeoma Okoro',
-        title: 'Founder & CEO',
-        company: 'GreenBuild',
-        tags: ['CleanTech', 'Construction', 'B2B'],
-        bio: 'Sustainable building materials for fast-growing cities.',
-        location: 'Enugu, Enugu State',
-        industry: 'CleanTech',
-        email: 'ifeoma@greenbuild.com',
-        whatsapp: '2348101010101',
-        avatar: 'assets/builder/8bf11482c6438f7833449a09978753e18bd16989.webp'
-    },
-    {
-        name: 'Tunde Alabi',
-        title: 'Founder',
-        company: 'Bemsoft',
-        tags: ['SaaS', 'HR', 'B2B'],
-        bio: 'Automating HR workflows for mid-size companies.',
-        location: 'Port Harcourt, Rivers State',
-        industry: 'SaaS',
-        email: 'tunde@bemsoft.com',
-        whatsapp: '2348111111111',
-        avatar: 'assets/builder/764f92efc4625ae3ea01bc5aff0ea6c101c83f2c.webp'
-    },
-    {
-        name: 'Zainab Lawal',
-        title: 'Founder',
-        company: 'HealthBridge',
-        tags: ['HealthTech', 'Telemedicine', 'B2C'],
-        bio: 'Remote care for underserved communities.',
-        location: 'Kano, Kano State',
-        industry: 'HealthTech',
-        email: 'zainab@healthbridge.com',
-        whatsapp: '2348121212121',
-        avatar: 'assets/builder/21e685fa29d0a2c8802414a35a2ab890ea1dd8d5.webp'
     }
 ];
 
 let currentMembers = membersData.slice();
+let loadMoreUsed = false;
 
 function initializeDirectory() {
     const searchInput = document.querySelector('.search-input');
@@ -170,7 +144,7 @@ function initializeDirectory() {
     const loadMoreButton = document.querySelector('.load-more-button');
 
     renderMembers(currentMembers);
-    populateFilterOptions(industrySelect, locationSelect, membersData);
+    populateFilterOptions(industrySelect, locationSelect);
     bindMemberActions();
 
     if (searchInput) {
@@ -191,17 +165,22 @@ function initializeDirectory() {
 
     if (loadMoreButton) {
         loadMoreButton.addEventListener('click', function() {
+            if (loadMoreUsed) {
+                showNotification('No more members to load.');
+                return;
+            }
             this.textContent = 'Loading...';
             this.disabled = true;
 
             setTimeout(() => {
-                currentMembers = moreMembersData.slice();
+                currentMembers = currentMembers.concat(moreMembersData);
                 renderMembers(currentMembers);
                 bindMemberActions();
                 applyFilters();
+                loadMoreUsed = true;
                 this.textContent = 'Load More Members';
                 this.disabled = false;
-                showNotification('More members loaded!');
+                showNotification('2 more members loaded!');
             }, 800);
         });
     }
@@ -223,7 +202,7 @@ function renderMembers(list) {
             <p class="member-bio">${member.bio}</p>
             <div class="member-location">
                 <img src="assets/builder/2ebc42fb54d86fe976f702d4b746c435afdaa9cf.svg" alt="Location" class="location-icon">
-                <span>${member.location}</span>
+                <span>${formatLocation(member.location)}</span>
             </div>
             <div class="member-actions">
                 <button class="connect-button" data-email="${member.email}">Connect</button>
@@ -233,16 +212,20 @@ function renderMembers(list) {
     `).join('');
 }
 
-function populateFilterOptions(industrySelect, locationSelect, list) {
+function populateFilterOptions(industrySelect, locationSelect) {
     if (!industrySelect || !locationSelect) return;
 
-    const industries = Array.from(new Set(list.map(member => member.industry))).sort();
-    const locations = Array.from(new Set(list.map(member => member.location))).sort();
-
     industrySelect.innerHTML = `<option value="all">All Industries</option>` +
-        industries.map(industry => `<option value="${industry}">${industry}</option>`).join('');
+        industryOptions.map(industry => `<option value="${industry}">${industry}</option>`).join('');
     locationSelect.innerHTML = `<option value="all">All Locations</option>` +
-        locations.map(location => `<option value="${location}">${location}</option>`).join('');
+        locationOptions.map(location => `<option value="${location}">${location}</option>`).join('');
+}
+
+function formatLocation(location) {
+    if (location === 'FCT') {
+        return 'FCT, Abuja';
+    }
+    return `${location} State`;
 }
 
 function applyFilters() {
